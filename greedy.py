@@ -31,20 +31,23 @@ def main():
 	operator = 0
 	arrO = []
 	nilai = 0.0
-	kurung = True
+	kurung = False
 	for i in range(3):
 		point = -100
 		for j in range (4):
+			kurungTemp = False
 			x = count(arr[3-i],arr[2-i],j)
 			temp = j-abs(24-x)+2 
 			#print(x)
 			if((j == 0 or j == 1) and (operator >1)):
 				temp = temp - 1
+				kurungTemp = True
 			if ((temp)>point):
 				point = temp
-				kurung = True
 				nilai = x
 				operator = j
+				if(kurungTemp):
+					kurung = True
 		arr[2-i] = nilai
 		#print(arr)
 		arrO.append(operator)			
@@ -58,7 +61,7 @@ def main():
 	else :
 		jawaban = str(arrt[3])+convert(arrO[0])+str(arrt[2])+convert(arrO[1])+str(arrt[1])+convert(arrO[2])+str(arrt[0])+" = "+str(nilai)
 	print(jawaban)
-	if (bool):
+	if (kurung):
 		print("total point = "+str(-abs(24-arr[0])+sum(arrO)+6-1))
 	else :
 		print("total point = "+str(-abs(24-arr[0])+sum(arrO)+6))
